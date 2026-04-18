@@ -11,10 +11,11 @@ def adam_step(param, grad, m, v, t, lr=1e-3, beta1=0.9, beta2=0.999, eps=1e-8):
     m=np.array(m)
     v=np.array(v)
     m=beta1*m+(1-beta1)*grad
-    new_m=m/(1-(beta1**t))
+    m_hat=m/(1-(beta1**t))
 
     v=(beta2*v)+((1-beta2)*(grad**2))
-    new_v=v/(1-(beta2**t))
-    param_new=param-lr*(new_m/((new_v**0.5)+eps))
+    v_hat=v/(1-(beta2**t))
+    param_new=param-lr*(m_hat/((v_hat**0.5)+eps))
+    #“new m” = updated m after this step (raw m)
     return (param_new,m,v)
    
