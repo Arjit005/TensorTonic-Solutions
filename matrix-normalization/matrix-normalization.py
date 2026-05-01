@@ -18,7 +18,9 @@ def matrix_normalization(matrix, axis=None, norm_type='l2'):
     if matrix.ndim != 2:
         return None 
     if axis is not None and axis not in (0, 1):
-        return None    
+        return None   
+
+    # =========normalization logic=========================    
     if norm_type=='l2':
         Euclidean=np.sqrt(np.sum(matrix**2,keepdims=True,axis=axis))
         safe=np.where(Euclidean==0,1.0,Euclidean)
