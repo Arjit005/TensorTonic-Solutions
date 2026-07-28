@@ -10,7 +10,7 @@ def pad_sequences(seqs, pad_value=0, max_len=None):
     if len(seqs) == 0:
         return np.empty((0, 0), dtype=int)
     if max_len is None:
-        max_len= max(len(seq) for seq in seqs)
+        max_len= max(len(seq) for seq in seqs) # finds max lenghts from each rows 
     # req 1 full filled
     
     # create the entire matrix
