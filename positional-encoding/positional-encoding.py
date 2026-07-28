@@ -8,7 +8,13 @@ def positional_encoding(seq_len, d_model, base=10000.0):
 
     # Step 1: Create all positions (column vector)
     pos = np.arange(seq_len)[:, None]
-
+    Rule to remember
+"""
+np.arange(seq_len) → 1D array (seq_len,)
+np.arange(seq_len)[:, None] → column vector (seq_len, 1)
+We use [:, None] not because the formula requires it, 
+but because NumPy's broadcasting requires compatible shapes to generate all position–frequency combinations in one operation without loops.
+"""
     # Step 2: Frequency indices
     freq_indices = np.arange((d_model + 1) // 2)
 
@@ -24,6 +30,6 @@ def positional_encoding(seq_len, d_model, base=10000.0):
 
     # Step 6: Fill alternating columns
     pe[:, 0::2] = sin_val
-    pe[:, 1::2] = cos_val[:, :d_model // 2]
+    pe[:, 1::2] = cos_val[:, :d_model // 2] #This exists only to handle odd d_model values.[:, :d_model // 2]
 
     return pe
