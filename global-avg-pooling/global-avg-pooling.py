@@ -16,11 +16,11 @@ def global_avg_pool(x):
     x = np.asarray(x, dtype=float)
 
     if x.ndim == 3:
-        gap = np.mean(x, axis=(1, 2))
+        gap = np.mean(x, axis=(1, 2)) # cal avg across axis 1 and 2
         return gap
 
     elif x.ndim == 4:
-        gap = np.mean(x, axis=(2, 3))
+        gap = np.mean(x, axis=(2, 3)) ## cal avg across axis 2 and 3
         return gap
 
     else:
