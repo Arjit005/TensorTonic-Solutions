@@ -5,7 +5,7 @@ def chi2_independence(C):
     Compute chi-square test statistic and expected frequencies.
     """
 
-    # completeflow willl be ==>
+    # completeflow will be ==>
     
     """
     C
