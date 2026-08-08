@@ -27,6 +27,64 @@ def chi2_independence(C):
     Add all cells
     ↓
     χ² statistic
+
+
+
+What code is doing==>
+
+                 C
+                 ↓
+          OBSERVED DATA
+                 ↓
+      Calculate row/column totals
+                 ↓
+        Calculate EXPECTED
+                 ↓
+       Compare O with E
+                 ↓
+        (O - E)² / E
+                 ↓
+       Add all the values
+                 ↓
+             χ²
+
+We need to calculate every row × every column:
+
+                  90          110
+              ┌──────────┬──────────┐
+100           │ 100×90   │ 100×110  │
+              │   9000   │   11000  │
+              ├──────────┼──────────┤
+100           │ 100×90   │ 100×110  │
+              │   9000   │   11000  │
+              └──────────┴──────────┘
+
+That's exactly what np.outer() does.    
+
+
+
+==> Then divide by the grand total:
+
+expected = np.outer(row_totals, col_totals) / total
+
+So:
+
+              9000       11000
+              ─────      ─────
+               200        200
+
+                ↓          ↓
+
+                45         55
+
+Result:
+
+Expected:
+
+       Bought   Didn't Buy
+Male      45        55
+Female    45        55
+
     """
     # O=>observed 
     #E=> Expected
