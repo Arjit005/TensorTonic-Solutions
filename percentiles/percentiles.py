@@ -36,7 +36,20 @@ def percentiles(x, q):
                          ↓
                   Final percentile
     
-    
+
+
+
+    Why linear?
+
+Because we're assuming the movement between 20 and 30 is proportional:
+
+        0%       25%             100%
+        │---------│---------------│
+        20       22.5            30
+        
+        That's the entire idea.
+
+Linear interpolation = finding a value between two known values by moving proportionally between them.
     """
     #float() means: "Convert this thing into one Python floating-point number.for one number "
 
