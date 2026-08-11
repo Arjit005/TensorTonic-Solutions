@@ -13,6 +13,9 @@ def majority_classifier(y_train, X_test):
 
     # counting majority element 
     classes,counts=np.unique(y_train,return_counts=True)
+    # return_counts=True
+    # NumPy also tells you how many times each value occurs
+    
     majority_classes=classes[np.argmax(counts)]
     # doing predictions
     predictions=np.full(len(X_test),majority_classes,dtype=int)
