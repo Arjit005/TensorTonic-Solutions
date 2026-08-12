@@ -1,5 +1,35 @@
 import numpy as np
 
+"""
+                    PARENT DATASET
+                 y = [0, 0, 1, 1]
+                       │
+                       │
+                 Parent Entropy
+                       │
+                       ▼
+              Choose a split rule
+                 Age <= 30 ?
+                       │
+              ┌────────┴────────┐
+              │                 │
+           TRUE              FALSE
+              │                 │
+              ▼                 ▼
+        LEFT CHILD         RIGHT CHILD
+          [0, 0]              [1, 1]
+              │                 │
+              ▼                 ▼
+       Entropy = 0        Entropy = 0
+              │                 │
+              └────────┬────────┘
+                       │
+                       ▼
+             Weighted Child Entropy
+                       │
+                       ▼
+              Information Gain
+"""
 def _entropy(y):
     """
     Helper: Compute Shannon entropy (base 2) for labels y.
