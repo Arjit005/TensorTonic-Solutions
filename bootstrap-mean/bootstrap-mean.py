@@ -129,7 +129,27 @@ def bootstrap_mean(x, n_bootstrap=1000, ci=0.95, rng=None):
     if rng is None:
         rng = np.random.default_rng()
 
+    """
+    The rng is the object that performs this random selection
+    means:
 
+    "Use this random generator to randomly choose values."
+
+        User
+         │
+         │ doesn't provide rng
+         ▼
+        rng = None
+         │
+         ▼
+        Create RNG automatically
+         │
+         ▼
+        rng = np.random.default_rng()
+         │
+         ▼
+        Use RNG for bootstrap sampling
+        """
     # ============================================================
     # STEP 3: Create an empty list
     # ============================================================
