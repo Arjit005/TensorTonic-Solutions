@@ -65,3 +65,79 @@ def iou(box_a, box_b):
     iou_value = area_of_intersection / area_of_union
 
     return iou_value
+    """
+    Suppose each box is:
+
+        [x1, y1, x2, y2]
+         ↑   ↑   ↑   ↑
+        left top right bottom
+        
+        Consider only the x-axis first.
+        
+        1. Left edge → max()
+        
+        Suppose:
+        
+        Box A: x1 = 2
+        Box B: x1 = 5
+        
+        On a number line:
+        
+        2────────────10
+             5────────────15
+             ↑
+           overlap starts
+        
+        The overlap cannot start at 2, because Box B doesn't exist before 5.
+        
+        So the overlap starts at the later/larger left boundary:
+        
+        intersection_x1 = max(2, 5)
+                          # 5
+        
+        So:
+        
+        Left boundary of overlap = maximum of the two left boundaries.
+        
+        2. Right edge → min()
+        
+        Now suppose:
+        
+        Box A: x2 = 10
+        Box B: x2 = 15
+        2────────────10
+             5──────────────15
+                     ↑
+                overlap ends
+        
+        The overlap cannot continue to 15, because Box A ends at 10.
+        
+        So the overlap ends at the earlier/smaller right boundary:
+        
+        intersection_x2 = min(10, 15)
+                          # 10
+        
+        Therefore:
+        
+        Right boundary of overlap = minimum of the two right boundaries.
+        
+        3. The same logic applies to Y
+        
+        For the vertical direction:
+        
+        intersection_y1 = max(box_a[1], box_b[1])
+        intersection_y2 = min(box_a[3], box_b[3])
+        
+        So the complete rule is:
+        
+                         INTERSECTION
+        
+                  ┌─────────────────────┐
+                  │                     │
+        LEFT  →   max                   │   ← RIGHT → min
+                  │      OVERLAP         │
+                  │                     │
+                  └─────────────────────┘
+                  ↑                     ↑
+               TOP → max             BOTTOM → min
+    """
