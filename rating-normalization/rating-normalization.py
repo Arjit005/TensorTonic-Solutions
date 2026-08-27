@@ -33,10 +33,17 @@ def rating_normalization(matrix: list) -> list:
         else:
             mean = 0
 
-        normalized = [
-            0 if x == 0 else round(x - mean, 6)
-            for x in row
-        ]
+        # normalized = [
+        #     0 if x == 0 else round(x - mean, 6)
+        #     for x in row
+        # ]
+        normalized = []
+
+        for x in row:
+            if x == 0:
+                normalized.append(0)
+            else:
+                normalized.append(round(x - mean, 6))
 
         result.append(normalized)
 
