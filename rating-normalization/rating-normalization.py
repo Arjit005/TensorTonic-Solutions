@@ -33,6 +33,9 @@ def rating_normalization(matrix: list) -> list:
         else:
             mean = 0
 
+        #Isko mentally hamesha aise padho:
+
+        #"For every x in row, agar x zero hai toh 0, warna x-minus-mean."
         # normalized = [
         #     0 if x == 0 else round(x - mean, 6)
         #     for x in row
