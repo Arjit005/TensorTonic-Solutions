@@ -18,4 +18,4 @@ def matrix_factorization_sgd_step(U: list, V: list, r: float, lr: float, reg: fl
     return [new_U,new_V]
     
     
-    pass
+    
